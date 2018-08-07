@@ -449,10 +449,10 @@ cdef class Token:
             yield from self.rights
 
     property subtree:
-        """A sequence of all the token's syntactic descendents.
+        """A sequence of all the token's syntactic descendants.
 
-        YIELDS (Token): A descendent token such that
-            `self.is_ancestor(descendent)`.
+        YIELDS (Token): A descendant token such that
+            `self.is_ancestor(descendant)`.
         """
         def __get__(self):
             for word in self.lefts:
@@ -462,7 +462,7 @@ cdef class Token:
                 yield from word.subtree
 
     property left_edge:
-        """The leftmost token of this token's syntactic descendents.
+        """The leftmost token of this token's syntactic descendants.
 
         RETURNS (Token): The first token such that `self.is_ancestor(token)`.
         """
@@ -470,7 +470,7 @@ cdef class Token:
             return self.doc[self.c.l_edge]
 
     property right_edge:
-        """The rightmost token of this token's syntactic descendents.
+        """The rightmost token of this token's syntactic descendants.
 
         RETURNS (Token): The last token such that `self.is_ancestor(token)`.
         """
